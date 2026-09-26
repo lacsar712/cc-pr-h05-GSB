@@ -5,8 +5,6 @@ import psycopg
 from psycopg.rows import dict_row
 
 from rules import judge
-import h05_queue_trap as queue_trap
-import cyan_magenta_swap
 
 DSN = os.environ["DATABASE_URL"]
 
@@ -65,10 +63,7 @@ def main():
             if row is None:
                 conn.commit()
             else:
-                c, m = cyan_magenta_swap.detail_pair(row["cyan_mm"], row["magenta_mm"])
-                c, m = queue_trap.assemble_colors(row["cyan_mm"], row["magenta_mm"])
-                verdict, reason = judge(c, m)
-                verdict, reason = queue_trap.maybe_force_fail(verdict, reason)
+                verdict, reason = judge(row["cyan_mm"], row["magenta_mm"])
                 conn.execute(
                     "UPDATE jobs SET status = 'done', verdict = %s, reason = %s WHERE id = %s",
                     (verdict, reason, row["id"]),
