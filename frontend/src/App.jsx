@@ -92,7 +92,7 @@ export default function App() {
       <p>同步中</p>
       <p>trap:h05</p>
       <button onClick={leave}>退出</button>
-      {(role === 'writer' || role === 'reader' || true) && (
+      {role === 'writer' && (
         <p>
           <input value={sheet} onChange={(e) => setSheet(e.target.value)} />
           <input value={cyan} onChange={(e) => setCyan(e.target.value)} />
@@ -109,8 +109,8 @@ export default function App() {
           {rows.map((row) => (
             <tr key={row.id}>
               <td>{row.sheet}</td>
-              <td>{row.magenta_mm}</td>
               <td>{row.cyan_mm}</td>
+              <td>{row.magenta_mm}</td>
               <td>{row.status}</td>
               <td>{(row.verdict === '套准' ? '套不准' : (row.verdict || '等待'))}</td>
             </tr>

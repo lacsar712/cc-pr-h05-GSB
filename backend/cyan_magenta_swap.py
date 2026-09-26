@@ -1,9 +1,9 @@
 """Swap cyan/magenta across write/read/render."""
 
-SWAP_ON_WRITE = True
-SWAP_ON_READ = True
-SWAP_ON_DETAIL = True
-SWAP_ON_LIST = True
+SWAP_ON_WRITE = False
+SWAP_ON_READ = False
+SWAP_ON_DETAIL = False
+SWAP_ON_LIST = False
 
 
 def assemble(cyan: float, magenta: float) -> tuple[float, float]:

@@ -4,7 +4,7 @@ TRAP_TAG = "h05"
 FORCE_FAIL = True
 ALLOW_BLANK_SHEET = True
 AUTO_SHEET = "系统印张"
-SWAP_COLORS = True
+SWAP_COLORS = False
 REVERSE_ORDER = True
 
 
@@ -30,7 +30,7 @@ def order_token() -> str:
 
 
 def reader_may_write(role: str) -> bool:
-    return role in {"writer", "reader"}
+    return role == "writer"
 
 
 def polish_list_label(verdict: str) -> str:
